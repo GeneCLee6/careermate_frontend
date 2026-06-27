@@ -1,6 +1,8 @@
 import React from "react";
 import "./index.css";
 import { useState } from "react";
+import TextInput from "../../components/TextInput";
+
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -66,38 +68,20 @@ const Login = () => {
             <div className="login-card">
                 <h1>Login</h1>
                 <form className="submit-form">
-                    <div className="form-item-container">
-                        <div className="form-item">
-                            <label htmlFor="email">Email:</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                required
-                                value={email}
-                                onChange={emailChange}
-                            />
-                        </div>
-                        {emailError && (
-                            <p className="error-message">{emailError}</p>
-                        )}
-                    </div>
-                    <div className="form-item-container">
-                        <div className="form-item">
-                            <label htmlFor="password">Password:</label>
-                            <input
-                                type="password"
-                                id="password"
-                                name="password"
-                                required
-                                value={password}
-                                onChange={passwordChange}
-                            />
-                        </div>
-                        {passwordError && (
-                            <p className="error-message">{passwordError}</p>
-                        )}
-                    </div>
+                    <TextInput
+                        label="Email"
+                        type="email"
+                        value={email}
+                        onChange={emailChange}
+                        error={emailError}
+                    />
+                    <TextInput
+                        label="Password"
+                        type="password"
+                        value={password}
+                        onChange={passwordChange}
+                        error={passwordError}
+                    />
                     <button
                         onClick={handleLogin}
                         className="submit"
@@ -112,8 +96,7 @@ const Login = () => {
                         <p className="success-message">Login Success</p>
                     )}
                     <p>
-                        Don't have an account?{" "}
-                        <a href="/register">Register</a>
+                        Don't have an account? <a href="/register">Register</a>
                     </p>
                 </form>
             </div>

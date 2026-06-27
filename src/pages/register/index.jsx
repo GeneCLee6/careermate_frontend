@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import { useState } from "react";
+import TextInput from "../../components/TextInput";
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -63,68 +64,34 @@ const Register = () => {
             <div className="register-card">
                 <h1>Careermate Register</h1>
                 <form className="submit-form">
-                    <div className="form-item-container">
-                        <div className="form-item">
-                            <label htmlFor="name">Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value={name}
-                                onChange={nameChange}
-                            />
-                        </div>
-                        {nameError && (
-                            <p className="error-message">{nameError}</p>
-                        )}
-                        <div className="form-item">
-                            <label htmlFor="email">Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={email}
-                                onChange={emailChange}
-                            />
-                        </div>
-                        {emailError && (
-                            <p className="error-message">{emailError}</p>
-                        )}
-                    </div>
-                    <div className="form-item-container">
-                        <div className="form-item">
-                            <label htmlFor="password">Password</label>
-                            <input
-                                type="password"
-                                id="password"
-                                name="password"
-                                value={password}
-                                onChange={passwordChange}
-                            />
-                        </div>
-                        {passwordError && (
-                            <p className="error-message">{passwordError}</p>
-                        )}
-                    </div>
-                    <div className="form-item-container">
-                        <div className="form-item">
-                            <label htmlFor="confirmPassword">
-                                Confirm Password
-                            </label>
-                            <input
-                                type="password"
-                                id="confirmPassword"
-                                name="confirmPassword"
-                                value={confirmPassword}
-                                onChange={confirmPasswordChange}
-                            />
-                        </div>
-                        {confirmPasswordError && (
-                            <p className="error-message">
-                                {confirmPasswordError}
-                            </p>
-                        )}
-                    </div>
+                    <TextInput
+                        label="Name"
+                        type="text"
+                        value={name}
+                        onChange={nameChange}
+                        error={nameError}
+                    />
+                    <TextInput
+                        label="Email"
+                        type="email"
+                        value={email}
+                        onChange={emailChange}
+                        error={emailError}
+                    />
+                    <TextInput
+                        label="Password"
+                        type="password"
+                        value={password}
+                        onChange={passwordChange}
+                        error={passwordError}
+                    />
+                    <TextInput
+                        label="Confirm Password"
+                        type="password"
+                        value={confirmPassword}
+                        onChange={confirmPasswordChange}
+                        error={confirmPasswordError}
+                    />
                     <button type="submit" className="submit">
                         Register
                     </button>

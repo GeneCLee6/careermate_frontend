@@ -28,32 +28,6 @@
     width: 100%;
 }
 
-.form-item-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    gap: 5px;
-}
-
-.form-item {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    margin-bottom: 15px;
-    width: 100%;
-}
-
-.form-item input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
 .submit {
     width: 100%;
     padding: 10px;
