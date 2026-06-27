@@ -1,7 +1,6 @@
 import React from "react";
 import "./index.css";
 import { useState } from "react";
-
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -112,6 +111,10 @@ const Login = () => {
                     {status === "success" && (
                         <p className="success-message">Login Success</p>
                     )}
+                    <p>
+                        Don't have an account?{" "}
+                        <a href="/register">Register</a>
+                    </p>
                 </form>
             </div>
         </div>

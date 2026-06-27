@@ -9,19 +9,19 @@ const Register = () => {
                 <form className="submit-form">
                     <div className="form-item-container">
                         <div className="form-item">
-                            <label htmlFor="name" className="submit-form">
+                            <label htmlFor="name">
                                 Name
                             </label>
                             <input type="text" id="name" name="name" />
                         </div>
                         <div className="form-item">
-                            <label htmlFor="email" className="submit-form">
+                            <label htmlFor="email">
                                 Email
                             </label>
                             <input type="email" id="email" name="email" />
                         </div>
                         <div className="form-item">
-                            <label htmlFor="password" className="submit-form">
+                            <label htmlFor="password">
                                 Password
                             </label>
                             <input
@@ -31,10 +31,7 @@ const Register = () => {
                             />
                         </div>
                         <div className="form-item">
-                            <label
-                                htmlFor="confirmPassword"
-                                className="submit-form"
-                            >
+                            <label htmlFor="confirmPassword">
                                 Confirm Password
                             </label>
                             <input
