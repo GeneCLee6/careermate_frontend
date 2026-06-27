@@ -1,0 +1,51 @@
+const Register = () => {
+    return (
+        <div className="login-container">
+            <div className="login-card">
+                <h1>Careermate Register</h1>
+                <form className="submit-form">
+                    <div className="form-item-container">
+                        <div className="form-item">
+                            <label htmlFor="name" className="submit-form">
+                                Name
+                            </label>
+                            <input type="text" id="name" name="name" />
+                        </div>
+                        <div className="form-item">
+                            <label htmlFor="email" className="submit-form">
+                                Email
+                            </label>
+                            <input type="email" id="email" name="email" />
+                        </div>
+                        <div className="form-item">
+                            <label htmlFor="password" className="submit-form">
+                                Password
+                            </label>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                            />
+                        </div>
+                        <div className="form-item">
+                            <label
+                                htmlFor="confirmPassword"
+                                className="submit-form"
+                            >
+                                Confirm Password
+                            </label>
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                            />
+                        </div>
+                        <button type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    );
+};
+
+export default Register;
