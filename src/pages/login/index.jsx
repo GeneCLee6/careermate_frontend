@@ -2,11 +2,11 @@ import React from "react";
 import "./index.css";
 import { useState } from "react";
 import TextInput from "../../components/TextInput";
+import useEmail from "../../hooks/useEmail";
 
 const Login = () => {
-    const [email, setEmail] = useState("");
+    const { email, emailError, emailChange } = useEmail();
     const [password, setPassword] = useState("");
-    const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
 
     const [status, setStatus] = useState("idle");
@@ -36,19 +36,6 @@ const Login = () => {
         }
     }
 
-    function emailChange(e) {
-        const value = e.target.value;
-        setEmail(value);
-        if (!value.trim()) {
-            setEmailError("Email is required");
-        } else if (!value.includes("@")) {
-            setEmailError("Invalid email format");
-        } else if (value.length > 50) {
-            setEmailError("Email must be less than 50 characters");
-        } else {
-            setEmailError("");
-        }
-    }
     function passwordChange(e) {
         const value = e.target.value;
         setPassword(value);

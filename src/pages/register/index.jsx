@@ -2,14 +2,14 @@ import React from "react";
 import "./index.css";
 import { useState } from "react";
 import TextInput from "../../components/TextInput";
+import useEmail from "../../hooks/useEmail";
 
 const Register = () => {
     const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
+    const { email, emailError, emailChange } = useEmail();
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [nameError, setNameError] = useState("");
-    const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
@@ -20,18 +20,6 @@ const Register = () => {
             setNameError("Name is required");
         } else {
             setNameError("");
-        }
-    }
-
-    function emailChange(e) {
-        const value = e.target.value;
-        setEmail(value);
-        if (!value.trim()) {
-            setEmailError("Email is required");
-        } else if (!value.includes("@")) {
-            setEmailError("Invalid email format");
-        } else {
-            setEmailError("");
         }
     }
 
