@@ -1,7 +1,10 @@
+import React from "react";
+import "./index.css";
+
 const Register = () => {
     return (
-        <div className="login-container">
-            <div className="login-card">
+        <div className="register-container">
+            <div className="register-card">
                 <h1>Careermate Register</h1>
                 <form className="submit-form">
                     <div className="form-item-container">
@@ -40,7 +43,9 @@ const Register = () => {
                                 name="confirmPassword"
                             />
                         </div>
-                        <button type="submit">Register</button>
+                        <button type="submit" className="submit">
+                            Register
+                        </button>
                     </div>
                 </form>
             </div>
