@@ -3,11 +3,11 @@ import "./index.css";
 import { useState } from "react";
 import TextInput from "../../components/TextInput";
 import useEmail from "../../hooks/useEmail";
+import usePassword from "../../hooks/usePassword";
 
 const Login = () => {
     const { email, emailError, emailChange } = useEmail();
-    const [password, setPassword] = useState("");
-    const [passwordError, setPasswordError] = useState("");
+    const { password, passwordError, passwordChange } = usePassword();
 
     const [status, setStatus] = useState("idle");
     const [error, setError] = useState("");
@@ -33,20 +33,6 @@ const Login = () => {
         } catch (err) {
             setStatus("error");
             setError(err.message);
-        }
-    }
-
-    function passwordChange(e) {
-        const value = e.target.value;
-        setPassword(value);
-        if (!value.trim()) {
-            setPasswordError("Password is required");
-        } else if (value.length < 6) {
-            setPasswordError("Password must be at least 6 characters");
-        } else if (value.length > 20) {
-            setPasswordError("Password must be less than 20 characters");
-        } else {
-            setPasswordError("");
         }
     }
 
