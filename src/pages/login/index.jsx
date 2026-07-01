@@ -4,6 +4,8 @@ import { useState } from "react";
 import TextInput from "../../components/TextInput";
 import useEmail from "../../hooks/useEmail";
 import usePassword from "../../hooks/usePassword";
+import { validateLogin } from "../../utils/validators";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const { email, emailError, emailChange } = useEmail();
@@ -11,6 +13,8 @@ const Login = () => {
 
     const [status, setStatus] = useState("idle");
     const [error, setError] = useState("");
+
+    const navigate = useNavigate();
 
     function mockLogin(email, password) {
         return new Promise((resolve, reject) => {
@@ -24,10 +28,20 @@ const Login = () => {
         });
     }
 
-    async function handleLogin() {
+    async function handleSubmit(e) {
+        e.preventDefault();
         setError("");
-        setStatus("loading");
+
+        const errMsg = validateLogin(email, password);
+
+        if (errMsg) {
+            setStatus("error");
+            setError(errMsg);
+            return;
+        }
+
         try {
+            setStatus("loading");
             await mockLogin(email, password);
             setStatus("success");
         } catch (err) {
@@ -40,7 +54,7 @@ const Login = () => {
         <div className="login-container">
             <div className="login-card">
                 <h1>Login</h1>
-                <form className="submit-form">
+                <form className="submit-form" onSubmit={handleSubmit}>
                     <TextInput
                         label="Email"
                         type="email"
@@ -55,11 +69,7 @@ const Login = () => {
                         onChange={passwordChange}
                         error={passwordError}
                     />
-                    <button
-                        onClick={handleLogin}
-                        className="submit"
-                        type="button"
-                    >
+                    <button className="submit">
                         {status === "loading" ? "Logging in..." : "Login"}
                     </button>
                     {status === "error" && (
@@ -68,8 +78,11 @@ const Login = () => {
                     {status === "success" && (
                         <p className="success-message">Login Success</p>
                     )}
-                    <p>
-                        Don't have an account? <a href="/register">Register</a>
+                    <p className="auth-link">
+                        Don't have an account?{" "}
+                        <span onClick={() => navigate("/register")}>
+                            Register
+                        </span>
                     </p>
                 </form>
             </div>
