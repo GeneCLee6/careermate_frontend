@@ -111,6 +111,9 @@ const Register = () => {
                     {status === "error" && (
                         <p className="error-message">{error}</p>
                     )}
+                    {status === "success" && (
+                        <p className="success-message">Register Success</p>
+                    )}
                     <p className="auth-link">
                         Already have an account?{" "}
                         <span onClick={() => navigate("/login")}>Login</span>
