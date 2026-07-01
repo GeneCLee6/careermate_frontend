@@ -11,7 +11,6 @@ const Register = () => {
     const { password, passwordError, passwordChange } = usePassword();
     const [confirmPassword, setConfirmPassword] = useState("");
     const [nameError, setNameError] = useState("");
-    const [passwordError, setPasswordError] = useState("");
     const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
     function nameChange(e) {
