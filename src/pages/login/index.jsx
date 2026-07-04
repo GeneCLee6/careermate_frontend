@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.css";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import TextInput from "../../components/TextInput";
 import useEmail from "../../hooks/useEmail";
 import usePassword from "../../hooks/usePassword";
@@ -14,13 +14,7 @@ const Login = () => {
     const [status, setStatus] = useState("idle");
     const [error, setError] = useState("");
 
-    const inputRef = useRef(null);
-
     const navigate = useNavigate();
-
-    useEffect(() => {
-        inputRef.current.focus();
-    }, []);
 
     function mockLogin(email, password) {
         return new Promise((resolve, reject) => {
@@ -62,12 +56,12 @@ const Login = () => {
                 <h1>Login</h1>
                 <form className="submit-form" onSubmit={handleSubmit}>
                     <TextInput
-                        ref={inputRef}
                         label="Email"
                         type="email"
                         value={email}
                         onChange={emailChange}
                         error={emailError}
+                        autoFocus
                     />
                     <TextInput
                         label="Password"

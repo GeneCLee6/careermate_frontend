@@ -1,13 +1,21 @@
-import React, { forwardRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./css/TextInput.css";
 
-const TextInput = forwardRef(({ label, type, value, onChange, error }, ref) => {
+const TextInput = ({ label, type, value, onChange, error, autoFocus }) => {
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        if (autoFocus) {
+            inputRef.current.focus();
+        }
+    }, [autoFocus]);
+
     return (
         <div className="form-item-container">
             <div className="form-item">
                 <label htmlFor={label.toLowerCase()}>{label}</label>
                 <input
-                    ref={ref}
+                    ref={inputRef}
                     type={type}
                     id={label.toLowerCase()}
                     name={label.toLowerCase()}
@@ -18,6 +26,6 @@ const TextInput = forwardRef(({ label, type, value, onChange, error }, ref) => {
             {error && <p className="error-message">{error}</p>}
         </div>
     );
-});
+};
 
 export default TextInput;
