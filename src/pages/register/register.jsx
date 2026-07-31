@@ -1,11 +1,84 @@
 import React from "react";
-import "./index.css";
 import { useState } from "react";
+import styled from "styled-components";
 import TextInput from "../../components/TextInput";
 import useEmail from "../../hooks/useEmail";
 import usePassword from "../../hooks/usePassword";
 import { useNavigate } from "react-router-dom";
 import { validateRegister } from "../../utils/validators";
+
+const AuthPage = styled.div`
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1rem;
+    background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 50%, #ecfeff 100%);
+`;
+
+const AuthCard = styled.div`
+    width: 100%;
+    max-width: 28rem;
+    padding: 2rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 1.25rem;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+    backdrop-filter: blur(10px);
+`;
+
+const PageTitle = styled.h1`
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: #0f172a;
+`;
+
+const AuthForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+`;
+
+const SubmitButton = styled.button`
+    width: 100%;
+    border: none;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: #0284c7;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+        background: #0369a1;
+    }
+`;
+
+const FeedbackText = styled.p`
+    font-size: 0.875rem;
+    color: ${({ status }) => (status === "error" ? "#ef4444" : "#16a34a")};
+`;
+
+const SwitchText = styled.p`
+    padding-top: 0.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #475569;
+`;
+
+const SwitchLink = styled.span`
+    margin-left: 0.25rem;
+    font-weight: 600;
+    color: #0284c7;
+    cursor: pointer;
+
+    &:hover {
+        color: #0369a1;
+    }
+`;
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -75,10 +148,10 @@ const Register = () => {
     }
 
     return (
-        <div className="register-container">
-            <div className="register-card">
-                <h1>Careermate Register</h1>
-                <form className="submit-form" onSubmit={handleSubmit}>
+        <AuthPage>
+            <AuthCard>
+                <PageTitle>Careermate Register</PageTitle>
+                <AuthForm onSubmit={handleSubmit}>
                     <TextInput
                         label="Name"
                         type="text"
@@ -108,20 +181,24 @@ const Register = () => {
                         onChange={confirmPasswordChange}
                         error={confirmPasswordError}
                     />
-                    <button className="submit">Register</button>
+                    <SubmitButton>Register</SubmitButton>
                     {status === "error" && (
-                        <p className="error-message">{error}</p>
+                        <FeedbackText status="error">{error}</FeedbackText>
                     )}
                     {status === "success" && (
-                        <p className="success-message">Register Success</p>
+                        <FeedbackText status="success">
+                            Register Success
+                        </FeedbackText>
                     )}
-                    <p className="auth-link">
-                        Already have an account?{" "}
-                        <span onClick={() => navigate("/login")}>Login</span>
-                    </p>
-                </form>
-            </div>
-        </div>
+                    <SwitchText>
+                        Already have an account?
+                        <SwitchLink onClick={() => navigate("/login")}>
+                            Login
+                        </SwitchLink>
+                    </SwitchText>
+                </AuthForm>
+            </AuthCard>
+        </AuthPage>
     );
 };
 
