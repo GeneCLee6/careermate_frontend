@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Decoration from "../../../assets/arrow-decoration.png";
+import HeroDecorationImg from "../../../assets/arrow-decoration.png";
 
 const Container = styled.div`
     width: 100%;
@@ -156,7 +156,7 @@ const Hero = () => {
                     </Buttons>
                 </HeroContent>
                 <HeroDecoration
-                    src={Decoration}
+                    src={HeroDecorationImg}
                     alt="hero-decoration"
                     aria-hidden="true"
                 />

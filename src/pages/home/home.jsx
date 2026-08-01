@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar";
 import Hero from "./Hero";
+import Features from "./Features";
 
 const MainContent = styled.div`
     margin-top: 62px;
@@ -14,6 +15,7 @@ const Home = () => {
             <MainContent>
                 <Navbar />
                 <Hero />
+                <Features />
             </MainContent>
         </React.Fragment>
     );
